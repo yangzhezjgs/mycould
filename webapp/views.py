@@ -3,23 +3,26 @@ from flask import request
 from flask import redirect
 from flask import Blueprint
 
-from .app import db
+from .app import db,bootstrap
 from .models import Item
+from .forms import TextForm
 
 todolist = Blueprint('todolist',__name__)
 
 @todolist.route('/')
 def index():
+    form = TextForm()
     items = Item.query.all()
-    print(items)
-    return render_template('index.html', items=items)
+    return render_template('index.html', items=items, form=form)
 
 @todolist.route('/items/add', methods = ["POST"])
 def add():
-    content = request.form['content']
-    item = Item(content=content)
-    db.session.add(item)
-    db.session.commit()
+    form = TextForm()
+    if form.validate_on_submit():
+        content = form.text.data
+        item = Item(content=content)
+        db.session.add(item)
+        db.session.commit()
     return redirect('/')
 
 @todolist.route('/items/delete/<int:item_id>', methods=["GET"])
