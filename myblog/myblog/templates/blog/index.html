@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% from 'bootstrap/pagination.html' import render_pagination %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="container">
+    <div class="row">
+        <div class="col-sm-7 col-sm-offset-1">
+            {% include 'blog/_posts.html' %}
+            {% if posts %}
+                <div class="page-footer">{{ render_pagination(pagination) }}</div>
+            {% endif %}
+        </div>
+        <div class="col-sm-4 sidebar">
+            {% include 'blog/_sidebar.html' %}
+        </div>
+    </div>
+    </div>
+{% endblock %}
