@@ -4,6 +4,8 @@
 
 {% block content %}
     <div class="container">
+    <div class="row">
+    <div class="col-sm-6 col-sm-offset-1">
     <div class="page-header">
         <h1>{{ post.title }}
             <span class="float-right">
@@ -15,8 +17,6 @@
             Date: {{ post.timestamp }}
         </small>
     </div>
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-2">
             {{ post.body|safe }}
             <hr>
             <div class="modal fade postLinkModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
