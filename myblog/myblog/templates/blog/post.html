@@ -16,7 +16,7 @@
         </small>
     </div>
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-6 col-sm-offset-2">
             {{ post.body|safe }}
             <hr>
             <div class="modal fade postLinkModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
@@ -39,9 +39,9 @@
                 </div>
             </div>
         </div>
+    </div>
         <div class="col-sm-4 sidebar">
             {% include "blog/_sidebar.html" %}
         </div>
-    </div>
     </div>
 {% endblock %}
